@@ -1,0 +1,62 @@
+/*ITP Project stylesheet*/
+p{
+  font-family: roboto;
+  font-size: 1em;
+}
+
+#inputLine{
+  font-size:1.3em;
+}
+
+.adminHeader{
+  position:absolute;
+  top:3%;
+  left:3%;
+  color:black;
+  font-size:3em;
+  font-size: roboto;
+  font-weight: bold;
+}
+
+.admin{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  text-align:right;
+  color:white;
+  font-family: roboto;
+  font-size:2em;
+  margin:10px;
+}
+
+a.admin:hover{
+  text-decoration: none;
+}
+
+.well{
+  margin-top:-60px;
+}
+
+.greenHead{
+  background-color:#0F9D58;
+  height:240px;
+  margin-top:0px;
+  margin-right:0px;
+  width:100%;
+}
+
+.greenLine{
+  top:-10px;
+  margin-top:0;
+  border:0;
+  height: 10px;
+  background-color: rgba(15, 182, 88, 0.8);
+  width:100%;
+  position: relative;
+}
+
+.roboto{
+  font-family: roboto;
+  font-size: 2em;
+}

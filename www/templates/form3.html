@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ITP Project</title>
+    <!--  CSS -->
+    <link href="../css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="../css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500&subset=latin' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- JS -->
+    <script type="text/javascript" src="../js/add_fields.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <style>
+      .panel-primary{
+        margin-top:-10%;
+        padding:10px 0px;
+        border:none;
+        box-shadow: 0 0 20px #b5b7c0;
+      }
+      body{
+        background-color: #e8eaf6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="span1">
+      <hr class="greenHead"></hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="panel panel-primary">
+            <hr class="greenLine"></hr>
+            <legend class="roboto" style="margin:25px 0px;">
+              <text style="margin-left:4%;">Innopolis annual unit report, 2017</text>
+            </legend>
+              <p class="roboto" style="background-color:#0F9D58; color:white; padding:5px; padding-left:4%;">Section 3: Research</p>
+              <p class="roboto" style="color:red;font-size:1em;margin-left:4%;">*Required</p>
+              <div class="panel-body">
+                <form action="form4.html" method="POST" class="form">
+                    <h2 class="roboto">Grants<text style="color:red;">*</text></h2>
+                    <p>Numbered list. For each item, list: title of
+                      project; granting agency; period covered by grant;
+                      whether continuation of other grant; amount.</p>
+                    <div id="grants">
+                      <div class="form-group">
+                        <p>Title of project</p>
+                        <input type="text" id="inputLine" class="form-control mult-choice" placeholder="Enter title of project" aria-describedby="basic-addon2" name="grantsTitle[]" pattern="[A-Za-zА-Яа-яЁё0-9.,' ]+" required>
+                      </div>
+                      <div class="form-group">
+                        <p>Grant agency</p>
+                        <input type="text" id="inputLine" class="form-control mult-choice" placeholder="Enter name of grant agency" aria-describedby="basic-addon2" name="grantsAgency[]" pattern="[A-Za-zА-Яа-яЁё,.' ]+" required>
+                      </div>
+                      <div class="form-group">
+                        <p>Receiveing date</p>
+                        <input type="date" class="form-control mult-choice" name="receive[]" required>
+                      </div>
+                      <div class="form-group">
+                        <p>Ending date</p>
+                        <input type="date" class="form-control mult-choice" name="ending[]" required>
+                      </div>
+                      <div class="form-group">
+                        <p>Grant amount</p>
+                        <input type="text" id="inputLine" class="form-control mult-choice" placeholder="Enter the amount of grant" aria-describedby="basic-addon2" name="grantsAmoun[]" pattern="[0-9]+" required>
+                      </div>
+                        <button type="button" id="addPublication" style="background-color: white;
+                      border: 0px;" title="Add new publication" onClick="addGrant('grants')">
+                        <i class="material-icons">add</i>
+                      </button>
+                    </div>
+                    <h2 class="roboto">Research projects<text style="color:red;">*</text></h2>
+                    <p>Numbered list. Include all significant research
+                        themes in which members of your unit are involved. For each item,
+                        list: title of project; start  of project; expected end ;
+                        sources of financing(maybe grant or another source).</p>
+                      <div id="researches">
+                        <div class="form-group">
+                          <p>Title of research</p>
+                          <input type="text" id="inputLine" class="form-control mult-choice" placeholder="Enter title of research" aria-describedby="basic-addon2" name="researchesTitle[]" size="6" pattern="[A-Za-zА-Яа-яЁё,.'0-9 ]+"required>
+                        </div>
+                        <div class="form-group">
+                          <p>Research start </p>
+                          <input type="date" class="form-control mult-choice" name="researchStart[]" required>
+                        </div>
+                        <div class="form-group">
+                          <p>Research end </p>
+                          <input type="date" class="form-control mult-choice" name="researchEnd[]" required>
+                        </div>
+                        <div class="form-group">
+                          <p>Source of financing</p>
+                          <input type="text" id="inputLine" class="form-control mult-choice" placeholder="Enter source of financing" aria-describedby="basic-addon2" name="financing[]" pattern="[A-Za-zА-Яа-яЁё,.' ]+"required>
+                        </div>
+                          <button type="button" id="addPublication" style="background-color: white;
+                        border: 0px;" title="Add new publication" onClick="addResearch('researches')">
+                          <i class="material-icons">add</i>
+                        </button>
+                      </div>
+                      <h2 class="roboto">Publications<text style="color:red;"></text></h2>
+                      <p>Numbered list. Indicate all publications of which
+                            members of the unit are authors or coauthors,
+                            type of publication("Conference","Journal")
+                            Use standard style for scientific bibliography entries.</p>
+                      <div id="publicationsss">
+                        <div class="form-group">
+                          <p>Title of publication</p>
+                          <input type="text" id="inputLine" class="form-control mult-choice" placeholder="Enter title of publication" aria-describedby="basic-addon2" name="publications[]" pattern="[A-Za-zА-Яа-яЁё.,'0-9 ]+" required>
+                        </div>
+                        <div class="form-group">
+                          <p>Type of publications</p>
+                          <div class="form-group mult-choice">
+                            <select class="form-control" name="publicationsType[]" required>
+                              <option>Conference</option>
+                              <option>Journal</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <p>Date of publication</p>
+                          <input type="date" class="form-control mult-choice" name="publicationDate[]" required>
+                        </div>
+                        <button type="button" id="addPublication" style="background-color: white;
+                        border: 0px;" title="Add new publication" onClick="addPublications('publicationsss')">
+                          <i class="material-icons">add</i>
+                        </button>
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-default" style="padding:20px; font-size:1.4em;">Next section</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+</html>

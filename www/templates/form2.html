@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ITP Project</title>
+    <!--  CSS -->
+    <link href="../css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="../css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500&subset=latin' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- JS -->
+    <script type="text/javascript" src="../js/add_fields.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <style>
+      .panel-primary{
+        margin-top:-10%;
+        padding:10px 0px;
+        border:none;
+        box-shadow: 0 0 20px #b5b7c0;
+      }
+      body{
+        background-color: #e8eaf6;
+      }
+    </style>
+</head>
+<body>
+    <div class="span1">
+      <hr class="greenHead"></hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="panel panel-primary">
+            <hr class="greenLine"></hr>
+            <legend class="roboto" style="margin:25px 0px;">
+              <text style="margin-left:4%;">Innopolis annual unit report, 2017</text>
+            </legend>
+              <p class="roboto" style="background-color:#0F9D58; color:white; padding:5px; padding-left:4%;">Section 2: Teaching</p>
+              <p class="roboto" style="color:red;font-size:1em;margin-left:4%;">*Required</p>
+              <div class="panel-body">
+                <form method="POST" action="form3.html">
+                  <h2 class="roboto">Courses taught<text style="color:red;">*</text></h2>
+                  <p>Numbered list. Include all courses taught or co-taught by members of your unit. For each item, list: course name; semester ("Spring" or "Fall"); level (bachelor, master, PhD); approximate number of students.</p>
+                  <div id="courses">
+                    <div class="form-group">
+                      <p>Course name</p>
+                      <input type="text" id="inputLine" class="form-control mult-choice" name="coursesTaught[]" placeholder="Enter course name" aria-describedby="basic-addon2" required>
+                    </div>
+                    <p>Semester</p>
+                    <div class="form-group mult-choice">
+                      <select class="form-control" name="semestersTaught[]" required>
+                        <option>Fall</option>
+                        <option>Spring</option>
+                      </select>
+                    </div>
+                    <p>Level</p>
+                    <div class="form-group mult-choice">
+                      <select class="form-control" name="levelsTaught[]" required>
+                        <option>Bachelor</option>
+                        <option>Master</option>
+                        <option>PhD</option>
+                      </select>
+                    </div>
+                    <p>Number of students</p>
+                    <input type="text" id="inputLine" class="form-control mult-choice" name="studentsTaught[]" size="6" placeholder="Enter number of students" aria-describedby="basic-addon2" pattern="[0-9]+"required>
+                    <button type="button" id="addPublication" style="background-color: white; margin-top:10px;
+                  border: 0px;" title="Add new publication" onClick="addCourse('courses')">
+                    <i class="material-icons">add</i>
+                  </button>
+              </div>
+          <h2 class="roboto">Examinations<text style="color:red;">*</text></h2>
+          <p> Numbered list. Include all examinations
+            administered or co-administered by members of your unit.
+            For each item, list: course name; semester ("Spring" or "Fall");
+            kind of exam (final exam of the course, repetition exam);
+            approximate number of students taking the exam.</p>
+          <div id="exams">
+            <div class="form-group">
+              <p>Courses</p>
+              <input type="text" id="inputLine" class="form-control mult-choice" name="coursesExam[]" placeholder="Enter course name" aria-describedby="basic-addon2" required>
+            </div>
+            <p>Semester</p>
+            <div class="form-group mult-choice">
+              <select class="form-control" name="semestersExam[]" required>
+                <option>Fall</option>
+                <option>Spring</option>
+              </select>
+            </div>
+            <p>Kind of exam</p>
+            <div class="form-group mult-choice">
+              <select class="form-control" name="exams[]" required>
+                <option>Repetition exam</option>
+                <option>Final exam</option>
+              </select>
+            </div>
+            <p>Number of students</p>
+            <input type="text" id="inputLine" class="form-control mult-choice" name="studentsExam[]" placeholder="Enter number of students" aria-describedby="basic-addon2" pattern="[0-9]+" required>
+            <button type="button" id="addPublication" style="background-color: white;
+            border: 0px;" title="Add new publication" onClick="addExam('exams')">
+            <i class="material-icons">add</i>
+            </button>
+          </div>
+          <h2 class="roboto">Students supervised<text style="color:red;">*</text></h2>
+          <p> For each student, indicate student name and
+            nature of work, e.g. bachelor thesis, master thesis, summer internship.</p>
+          <div id="studSups">
+            <div class="form-group">
+              <p>Student name</p>
+              <input type="text" class="form-control mult-choice" name="studentsName[]" placeholder="Enter students name" aria-describedby="basic-addon2" pattern="[A-Za-zА-Яа-яЁё,.' ]+" required>
+            </div>
+            <p>Nature of work</p>
+            <div class="form-group mult-choice">
+              <select class="form-control" name="workNature[]" required>
+                <option>Bachelors thesis</option>
+                <option>Master thesis</option>
+                <option>Summer internship</option>
+              </select>
+            </div>
+            <button type="button" id="addPublication" style="background-color: white;
+            border: 0px;" title="Add new publication" onClick="addStudSup('studSups')">
+              <i class="material-icons">add</i>
+            </button>
+          </div>
+          <h2 class="roboto">Completed student reports<text style="color:red;">*</text></h2>
+          <p>For each report, indicate student name,
+            title of report. If you add student that is not included in the list above, their reports will not be taken into account</p>
+          <div id="reports">
+            <div class="form-group">
+              <p>Student name</p>
+              <input type="text" class="form-control mult-choice" name="studentReport[]" placeholder="Enter students name" aria-describedby="basic-addon2" pattern="[A-Za-zА-Яа-яЁё,.' ]+" required>
+            </div>
+            <p>Title of report</p>
+            <input type="text" class="form-control mult-choice" placeholder="Enter title of report" aria-describedby="basic-addon2" name="reportTitles[]" required>
+            <button type="button" id="addPublication" style="background-color: white;
+            border: 0px;" title="Add new publication" onClick="addReport('reports')">
+              <i class="material-icons">add</i>
+            </button><br class="clearBoth"/>
+          </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default" style="padding:20px; font-size:1.4em;">Next section</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</body>
+</html>

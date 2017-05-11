@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ITP Project</title>
+    <!--  CSS -->
+    <link href="../css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="../css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500&subset=latin' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- JS -->
+    <script type="text/javascript" src="../js/add_fields.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <style>
+      .panel-primary{
+        margin-top:-10%;
+        padding:10px 0px;
+        border:none;
+        box-shadow: 0 0 20px #b5b7c0;
+      }
+      body{
+        background-color: #e8eaf6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="span1">
+      <hr class="greenHead"></hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="panel panel-primary">
+            <hr class="greenLine"></hr>
+            <legend class="roboto" style="margin:25px 0px;">
+              <text style="margin-left:4%;">Innopolis annual unit report, 2017</text>
+            </legend>
+              <p class="roboto" style="background-color:#0F9D58; color:white; padding:5px; padding-left:4%;">Section 4: Technology transfer</p>
+              <p class="roboto" style="color:red;font-size:1em;margin-left:4%;">*Required</p>
+              <div class="panel-body">
+                <form action="form5.html" method="POST" class="form">
+                    <h2 class="roboto">Patents</h2>
+                    <p>List patents filed or otherwise submitted during the reported period. Indicate country of patent office. Number of patents should be equal to number of lisences. Otherwise, some of you data will not be taken into account.</p>
+                    <div id="patents">
+                      <div class="form-group">
+                        <p>Name of patent</p>
+                        <input type="text" id="inputLine" class="form-control mult-choice" placeholder="Enter name of patent" aria-describedby="basic-addon2" name="patents[]" pattern="[A-Za-zА-Яа-яЁё0-9.,' ]+">
+                      </div>
+                      <div class="form-group">
+                        <p>Country of patent office</p>
+                        <input type="text" id="inputLine" class="form-control mult-choice" placeholder="Enter name of the country, given patent" aria-describedby="basic-addon2" name="patentsCountries[]" pattern="[A-Za-zА-Яа-яЁё,.' ]+">
+                      </div>
+                        <button type="button" id="addPublication" style="background-color: white;
+                      border: 0px;" title="Add new patent" onClick="addPatent('patents')">
+                        <i class="material-icons">add</i>
+                      </button>
+                    </div>
+                    <h2 class="roboto">IP licensing (software or others)</h2>
+                    <p>List licenses granted. Number of licenses should be equal to number of patents. Otherwise, some of you data will not be taken into account.</p>
+                      <div id="licenses">
+                        <div class="form-group">
+                          <p>License</p>
+                          <input type="text" id="inputLine" class="form-control mult-choice" placeholder="Enter name of license" aria-describedby="basic-addon2" name="licensesGranted[]" pattern="[A-Za-zА-Яа-яЁё,.'0-9 ]+" >
+                        </div>
+                          <button type="button" id="addPublication" style="background-color: white;
+                        border: 0px;" title="Add new license" onClick="addLicense('licenses')">
+                          <i class="material-icons">add</i>
+                        </button>
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-default" style="padding:20px; font-size:1.4em;">Next section</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+</html>

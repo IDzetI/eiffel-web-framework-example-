@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    		<meta charset="utf-8">
+        <title>ITP Project</title>
+        <!--  CSS -->
+        <link href="../css/style.css" type="text/css" rel="stylesheet"/>
+        <link href="../css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,500&subset=latin' rel='stylesheet' type='text/css'>
+
+        <!-- JS -->
+        <script type="text/javascript" src="../js/init.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+         <style>
+          body{
+            background-color: #e8eaf6;
+          }
+
+          .box{
+            background-color: white;
+            padding:30px;
+
+          }
+          .requestLine{
+            font-size: 1.6em;
+            font-family: roboto;
+            margin: 10px -15px;
+          }
+          .dateField{
+            margin:5px 0px;;
+          }
+          .btn{
+            font-size: 1em;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="row">
+            <div class="col-md-12">
+              <hr class="greenHead"></hr>
+              <h1 class="adminHeader">Admin page</h1>
+            </div>
+
+            <div class="col-md-1"></div>
+            <div class="col-md-4 box" style="margin-bottom:20px;">
+                <h3>Requests:</h3>
+                <div class="col-md-12 requestLine">
+                  <button onClick="getStudentsNumber()" class="btn btn-default btn-block" style="white-space: normal;">Get number of supervised students by laboratory</button>
+                </div>
+                <div class="col-md-12 requestLine">
+                  <text>Choose laboratory:</text>
+                  <select id="labs1" class="form-control" data-width="100px"></select>
+                </div>
+                <div class="col-md-12"><hr style="border-top:1px solid black;"></hr></div>
+                <div class="col-md-12 requestLine">
+                  <button onClick="getAllPublications()" class="btn btn-default btn-block" style="white-space: normal;">Get all publications, that was done in 2017</button>
+                </div>
+                <div class="col-md-12"><hr style="border-top:1px solid black;"></hr></div>
+                <div class="col-md-12 requestLine">
+                  <button onClick="getCollaborationNumber()" class="btn btn-default btn-block" style="white-space: normal;">Get number of research collaborations done by laboratory</button>
+                </div>
+                <div class="col-md-12 requestLine ">
+                  <text>Choose laboratory:</label>
+                  <select id="labs2" class="form-control" data-width="100px"></select>
+                </div>
+                <div class="col-md-12"><hr style="border-top:1px solid black;"></hr></div>
+                <div class="col-md-12 requestLine">
+                  <button onClick="getCouresByDate()" class="btn btn-default btn-block" style="white-space: normal;">Get courses taught by a laboratory in chosen semester</button>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 requestLine">
+                    <text>Choose laboratory:</label>
+                  </div>
+                  <div class="col-md-12 requestLine">
+                    <select id="labs3" class="form-control" data-width="100px"></select>
+                    <div class="form-group mult-choice">
+                      <select class="form-control" id="courseIn">
+                        <option>Fall</option>
+                        <option>Spring</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12"><hr style="border-top:1px solid black;"></hr></div>
+                <div class="col-md-12 requestLine">
+                  <button onClick="getCumulativeInfo()" class="btn btn-default btn-block" style="white-space: normal;">Get cumulative info of a given unit over several years</button>
+                </div>
+                <div class="col-md-12 requestLine ">
+                  <text>Choose laboratory:</label>
+                  <select id="labs4" class="form-control" data-width="100px"></select>
+                </div>
+                <div class="col-md-12"><hr style="border-top:1px solid black;"></hr></div>
+                <div class="col-md-12 requestLine">
+                  <button onClick="getPublicationsByDate()" class="btn btn-default btn-block" style="white-space: normal;">Get all publications from initial period of time</button>
+                </div>
+                <div class="col-md-12 ">
+                  <div class="row">
+                    <input id="publicationIn" type="date"/>
+                  </div>
+                </div>
+                <div class="col-md-12"><hr style="border-top:1px solid black;"></hr></div>
+                <div class="col-md-12 requestLine ">
+                  <button onClick="getAllStudents()" class="btn btn-default btn-block" style="white-space: normal;">Get number of all supervised students</button>
+                </div>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-4 box">
+                <div id="response">
+                  <h3 style=" padding-left:30px;">Response:</h3></br>
+                  <div id="responses" style="font-size:1.5em;  padding-left:30px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          getLabs();
+
+          function getLabs(){
+            $.ajax({
+              type:"POST",
+              url:"/test/get_labs.txt",
+              success: function(data){
+                var array = data.split(';');
+                loadLabs(array,'labs1');
+                loadLabs(array,'labs2');
+                loadLabs(array,'labs3');
+                loadLabs(array,'labs4');
+              }
+            });
+          }
+
+          function loadLabs(array, labs){
+            var select = document.getElementById(labs);
+            $.each(array, function(index,value){
+              var newOpt = document.createElement('option');
+              newOpt.innerHTML=value;
+              select.appendChild(newOpt);
+            });
+          }
+        });
+      </script>
+  </body>
+</html>
